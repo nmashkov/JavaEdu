@@ -1,7 +1,7 @@
 package com.max.idea;
 import java.util.Scanner;
 
-public class Welcome {
+public class BaseInput {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
