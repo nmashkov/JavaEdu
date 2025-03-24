@@ -11,6 +11,10 @@ public class TaskFive {
         System.out.println("Введите два числа через Enter:");
         int x = in.nextInt();
         int y = in.nextInt();
+        if (y == 0) {
+            System.out.println("Деление на ноль (0), введите другое число:");
+            y = in.nextInt();
+        }
         System.out.println("Введите один из символов ‘+’, ‘-’, ‘*’ или ‘/’:");
         String symbol = in.next();
         in.close();
@@ -37,6 +41,8 @@ public class TaskFive {
                 System.out.print(x+" / "+y+" = ");
                 System.out.print(result);
                 break;
+            default:
+                System.out.println("Ошибка: неверный символ");
         }
     }
 }
