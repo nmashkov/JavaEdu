@@ -29,35 +29,32 @@ public class TaskFinalFour {
         String answer;
         boolean takeHelp = false;
         Scanner in = new Scanner(System.in);
-        while (try_count != 0) {
+        while (try_count > 0) {
+            System.out.printf("Попытка: %d%n", try_count);
             System.out.print("Ваш ответ: ");
             answer = in.nextLine();
-            try_count -= 1;
             //
             if (answer.toLowerCase().equals(trueAnswer)) {
                 System.out.println("Правильно!");
                 break;
             } else {
+                try_count -= 1;
                 System.out.println("Неверно!");
-                if (takeHelp) {
-                    System.out.println("Обидно, приходи в другой раз и завершить работу.");
-                    break;
+                if (try_count == 2) {
+                    System.out.print("Есть подсказка. Введи слово Подсказка, если хочешь воспользоваться, иначе ничего: ");
+                    String getHelp = in.nextLine();
+                    if (getHelp.equals("Подсказка")) {
+                        System.out.println(help);
+                        takeHelp = true;
+                    }
                 }
-                switch (try_count) {
-                    case 2:
-                        System.out.print("Есть подсказка. Введи слово Подсказка, если хочешь воспользоваться, иначе ничего: ");
-                        String getHelp = in.nextLine();
-                        if (getHelp.equals("Подсказка")) {
-                            System.out.println(help);
-                            takeHelp = true;
-                        }
-                        continue;
-                    case 1:
-                        System.out.println("Подсказка уже недоступна");
-                        continue;
-                    case 0:
-                        System.out.println("Обидно, приходи в другой раз и завершить работу.");
+                else {
+                    if (takeHelp | try_count == 0) {
+                        System.out.println("Обидно, приходи в другой раз.");
                         break;
+                    } else {
+                        System.out.println("Подсказка уже недоступна.");
+                    }
                 }
             }
         }
